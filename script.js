@@ -18650,7 +18650,7 @@
 		function pa() {
 			oa.aspect = window.innerWidth / window.innerHeight, oa.updateProjectionMatrix(), aa.setSize(window.innerWidth, window.innerHeight), ca.setSize(window.innerWidth, window.innerHeight)
 		}
-		da(), document.body.appendChild(ca.domElement), document.getElementById("ascii").style.whiteSpace = "prewrap", ra.load("https://cdn.jsdelivr.net/gh/rxm333/STL-to-ASCII-@792cde0c2aba2cc9f028acb4e9ac348b621509cb/models/martin.stl", (function(e) {
+		da(), document.body.appendChild(ca.domElement), document.getElementById("ascii").style.whiteSpace = "prewrap", ra.load("https://cdn.jsdelivr.net/gh/rxm333/STL-ASCII/models/martin.stl", (function(e) {
 			ea.material = ia, ea.geometry = e;
 			var t = new Zt(e, ia);
 			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox();
