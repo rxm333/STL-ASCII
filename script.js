@@ -18460,7 +18460,8 @@
 									let p, g;
 									g = (.3 * c + .59 * l + .11 * h) / 255, 0 == u && (g = 1), p = Math.floor((1 - g) * (x.length - 1)), a && (p = x.length - p - 1);
 									let f = x[p];
-									void 0 !== f && " " != f || (f = "&nbsp;"), n += i ? "<span style='color:rgb(" + c + "," + l + "," + h + ");" + (o ? "background-color:rgb(" + c + "," + l + "," + h + ");" : "") + (s ? "opacity:" + u / 255 + ";" : "") + "'>" + f + "</span>" : f
+									void 0 !== f && " " != f || (f = "&nbsp;"),
+									n += f
 								}
 								n += "<br/>"
 							}
@@ -18637,8 +18638,8 @@
 			oa = new iA(45, sa.width / sa.height, .1, 2e3),
 			aa = new Tr;
 		let ca, la = " .:-+*=%@#";
-		let ha = "black",
-			ua = "white";
+		let ha = "white",
+			ua = "black";
 
 		function da() {
 			ca = new Wo(aa, la, {
@@ -18653,7 +18654,7 @@
 		da(), document.body.appendChild(ca.domElement), document.getElementById("ascii").style.whiteSpace = "prewrap", ra.load("https://cdn.jsdelivr.net/gh/rxm333/STL-ASCII/models/martin.stl", (function(e) {
 			ea.material = ia, ea.geometry = e;
 			var t = new Zt(e, ia);
-			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox(), ea.rotation.y = 0 * Math.PI / 180, ea.geometry.computeBoundingBox();
+			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox();
 			var A = ea.geometry.boundingBox;
 
 			function n() {
@@ -18669,8 +18670,8 @@
 			let mouseX = 0;
 		
 			document.addEventListener('mousemove', function(e) {
-				mouseX = (e.clientX - window.innerWidth / 2) / 1000;
-				mouseY = (e.clientY - window.innerHeight / 2) / 1000;
+				mouseX = (e.clientX - window.innerWidth / 2) / 500;
+				mouseY = (e.clientY - window.innerHeight / 2) / 500;
 			}),
 
 			function e() {
