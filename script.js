@@ -18090,7 +18090,7 @@
 						return isFinite(f) && isFinite(m) && (f < -Math.PI ? f += g : f > Math.PI && (f -= g), m < -Math.PI ? m += g : m > Math.PI && (m -= g), s.theta = f <= m ? Math.max(f, Math.min(m, s.theta)) : s.theta > (f + m) / 2 ? Math.max(f, s.theta) : Math.min(m, s.theta)), s.phi = Math.max(A.minPolarAngle, Math.min(A.maxPolarAngle, s.phi)), s.makeSafe(), s.radius *= a, s.radius = Math.max(A.minDistance, Math.min(A.maxDistance, s.radius)), !0 === A.enableDamping ? A.target.addScaledVector(c, A.dampingFactor) : A.target.add(c), t.setFromSpherical(s), t.applyQuaternion(u), e.copy(A.target).add(t), A.object.lookAt(A.target), !0 === A.enableDamping ? (o.theta *= 1 - A.dampingFactor, o.phi *= 1 - A.dampingFactor, c.multiplyScalar(1 - A.dampingFactor)) : (o.set(0, 0, 0), c.set(0, 0, 0)), a = 1, !!(l || d.distanceToSquared(A.object.position) > i || 8 * (1 - p.dot(A.object.quaternion)) > i) && (A.dispatchEvent(Vo), d.copy(A.object.position), p.copy(A.object.quaternion), l = !1, !0)
 					}
 				}(), this.dispose = function() {
-					A.domElement.removeEventListener("contextmenu", z), A.domElement.removeEventListener("pointerdown", N), A.domElement.removeEventListener("pointercancel", V), A.domElement.removeEventListener("wheel", k), A.domElement.ownerDocument.removeEventListener("pointermove", O), A.domElement.ownerDocument.removeEventListener("pointerup", G), null !== A._domElementKeyEvents && A._domElementKeyEvents.removeEventListener("keydown", K)
+					A.domElement.removeEventListener("contextmenu", z), A.domElement.removeEventListener("pointerdown", N), A.domElement.removeEventListener("pointercancel", V), A.domElement.ownerDocument.removeEventListener("pointermove", O), A.domElement.ownerDocument.removeEventListener("pointerup", G), null !== A._domElementKeyEvents && A._domElementKeyEvents.removeEventListener("keydown", K)
 				};
 				const A = this,
 					n = {
@@ -18420,7 +18420,7 @@
 					return y[t.pointerId]
 				}
 				A.domElement.addEventListener("contextmenu", z), A.domElement.addEventListener("pointerdown", N), A.domElement.addEventListener("pointercancel", V), A.domElement.addEventListener("wheel", k, {
-					passive: !1
+					passive: true
 				}), this.update()
 			}
 		}
@@ -18524,8 +18524,8 @@
 				return e
 			}
 		};
-		let Zo = !1;
-		var qo = !1;
+		let Zo = true;
+		var qo = false;
 		let $o;
 		const ea = new Zt,
 			ta = new Hr;
@@ -18659,19 +18659,44 @@
 			function n() {
 				ca.render(ta, oa)
 			}
-			ea.position.y = (A.max.z - A.min.z) / 5, oa.position.x = 4 * A.max.x, oa.position.y = A.max.y, oa.position.z = 3 * A.max.z, ta.add(ea), $o = new zo(oa, ca.domElement),
-				function e() {
-					if (1 == Zo) {
-						const t = jo.getElapsedTime();
-						ea.rotation.z = t / 3, n(), window.requestAnimationFrame(e)
-					} else n(), window.requestAnimationFrame(e)
-				}(), document.getElementById("file-selector").addEventListener("change", (function(e) {
+			ea.position.y = (A.max.z - A.min.z) / 150, 
+			oa.position.x = 2 * A.max.x, oa.position.y = A.max.y, oa.position.z = 2 * A.max.z, 
+			ta.add(ea), $o = new zo(oa, ca.domElement),
+			$o.enableZoom = false,
+
+			$o.domElement.removeEventListener("wheel", k);
+
+			let mouseX = 0;
+		
+			document.addEventListener('mousemove', function(e) {
+				mouseX = (e.clientX - window.innerWidth / 2) / 1000;
+				mouseY = (e.clientY - window.innerHeight / 2) / 1000;
+			}),
+
+			function e() {
+				if (1 == Zo) {
+					const t = jo.getElapsedTime();
+					ea.rotation.z = mouseX;
+					console.log('Model rotation:', { 
+						z: ea.rotation.z.toFixed(3), 
+						y: ea.rotation.y.toFixed(3) 
+					}); 
+					n();
+					window.requestAnimationFrame(e)
+				} else {
+					n();
+					window.requestAnimationFrame(e)
+				}
+			}(), 
+				document.getElementById("file-selector").addEventListener("change", (function(e) {
 					const A = e.target.files[0],
 						n = new FileReader;
 					n.readAsArrayBuffer(A), n.onload = function() {
 						0 == qo && (qo = !0);
 						const e = ra.parse(this.result);
-						t = e, ea.geometry = e, ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox();
+						t = e, ea.geometry = e, ea.geometry.center(), 
+						ea.rotation.x = -90 * Math.PI / 180,
+						ea.geometry.computeBoundingBox();
 						var A = ea.geometry.boundingBox;
 						ea.position.y = (A.max.z - A.min.z) / 6, ta.add(ea)
 					}
@@ -18682,8 +18707,6 @@
 				var t = document.createElement("a");
 				document.body.appendChild(t), t.download = "ASCII.jpg", t.href = e.toDataURL("image/jpg"), console.log(t.href), t.click()
 			}))
-		})), document.getElementById("rotateButton").addEventListener("click", (function() {
-			Zo = !Zo
 		})), document.getElementById("updateASCII").addEventListener("click", (function() {
 			document.body.removeChild(ca.domElement), la = " ." + document.getElementById("newASCII").value, da(), pa(), document.body.appendChild(ca.domElement), $o = new zo(oa, ca.domElement)
 		})), document.getElementById("resetASCII").addEventListener("click", (function() {
