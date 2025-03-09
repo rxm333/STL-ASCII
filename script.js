@@ -18465,7 +18465,7 @@
 								}
 								n += "<br/>"
 							}
-							t.innerHTML = "<tr><td>" + n + "</td></tr>"
+							t.innerHTML = "<tr><td style='position: fixed; top: 0; left: 0;'>" + n + "</td></tr>"
 						}(0, u)
 				}, this.domElement = h;
 				const f = " .,:;i1tfLCG08@".split(""),
