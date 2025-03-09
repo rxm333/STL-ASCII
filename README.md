@@ -1,21 +1,29 @@
-# STL to ASCII Generator
+# STL to ASCII Webflow Integration
 
-Try it out: [STL to ASCII Generator](https://andrewsink.github.io/STL-to-ASCII-Generator/)
+Ce repository contient les fichiers nécessaires pour intégrer le générateur STL vers ASCII dans un site Webflow.
 
-<img width="450" alt="Deci4" src="https://user-images.githubusercontent.com/46334898/150046870-b8491657-2946-4746-a82f-6869887311c3.png">
+## Fichiers
 
-UPDATE: Huge thanks to [Oskitone](https://github.com/oskitone) for their help in adding a text export option!
+- `webflow-integration.js` : Script principal pour l'intégration Webflow
+- `custom.css` : Styles personnalisés pour l'interface
+- `script.js` : Script original du générateur STL vers ASCII
 
-The STL to ASCII Generator is a lightweight and easy way to convert an STL file (3D model) into an ASCII image. Just upload your STL file and select a character set to generate the image. 
+## Installation
 
+1. Hébergez ces fichiers sur GitHub Pages ou un CDN
+2. Dans Webflow, ajoutez les scripts suivants dans la section "Head Code" des paramètres du site :
 
-You can enter your own custom text to change the characters used in the ASCII image, and reset them to the default character set: ' .:-+*=%@#'
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r130/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+<link rel="stylesheet" href="https://[VOTRE-USERNAME].github.io/[VOTRE-REPO]/custom.css">
+```
 
+3. Dans la section "Footer Code", ajoutez :
 
-Future Development:
+```html
+<script src="https://[VOTRE-USERNAME].github.io/[VOTRE-REPO]/webflow-integration.js"></script>
+<script src="https://[VOTRE-USERNAME].github.io/[VOTRE-REPO]/script.js"></script>
+```
 
-- [x] Copy ASCII image to clipboard (thanks [donno2048](https://github.com/donno2048)!)
-- [ ] Change lighting orientation
-- [ ] Add screenshot on mobile
-
-Find this project useful? You can buy me a [coffee on Ko-Fi](https://ko-fi.com/andrewsink)!
+4. Dans l'éditeur Webflow, ajoutez un div avec l'ID "stl-ascii-container" où vous souhaitez afficher le générateur. 
