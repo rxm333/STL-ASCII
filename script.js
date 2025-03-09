@@ -18653,7 +18653,7 @@
 		da(), document.body.appendChild(ca.domElement), document.getElementById("ascii").style.whiteSpace = "prewrap", ra.load("https://cdn.jsdelivr.net/gh/rxm333/STL-ASCII/models/martin.stl", (function(e) {
 			ea.material = ia, ea.geometry = e;
 			var t = new Zt(e, ia);
-			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox();
+			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox(), ea.rotation.y = 0 * Math.PI / 180, ea.geometry.computeBoundingBox();
 			var A = ea.geometry.boundingBox;
 
 			function n() {
