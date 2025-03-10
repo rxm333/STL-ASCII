@@ -18053,7 +18053,11 @@
 			};
 		class zo extends Q {
 			constructor(e, t) {
-				super(), void 0 === t && console.warn('THREE.OrbitControls: The second parameter "domElement" is now mandatory.'), t === document && console.error('THREE.OrbitControls: "document" should not be used as the target "domElement". Please use "renderer.domElement" instead.'), this.object = e, this.domElement = t, this.domElement.style.touchAction = "none", this.enabled = !0, this.target = new J, this.minDistance = 0, this.maxDistance = 1 / 0, this.minZoom = 0, this.maxZoom = 1 / 0, this.minPolarAngle = 0, this.maxPolarAngle = Math.PI, this.minAzimuthAngle = -1 / 0, this.maxAzimuthAngle = 1 / 0, this.enableDamping = !1, this.dampingFactor = .05, this.enableZoom = !0, this.zoomSpeed = 1, this.enableRotate = !0, this.rotateSpeed = 1, this.enablePan = !0, this.panSpeed = 1, this.screenSpacePanning = !0, this.keyPanSpeed = 7, this.autoRotate = !1, this.autoRotateSpeed = 2, this.keys = {
+				super(), void 0 === t && console.warn('THREE.OrbitControls: The second parameter "domElement" is now mandatory.'), t === document && console.error('THREE.OrbitControls: "document" should not be used as the target "domElement". Please use "renderer.domElement" instead.'), this.object = e, this.domElement = t, this.domElement.style.touchAction = "none", this.enabled = !0, this.target = new J, this.minDistance = 0, this.maxDistance = 1 / 0, this.minZoom = 0, this.maxZoom = 1 / 0, this.minPolarAngle = 0, this.maxPolarAngle = Math.PI, this.minAzimuthAngle = -1 / 0, this.maxAzimuthAngle = 1 / 0, this.enableDamping = !1, this.dampingFactor = .05, this.enableZoom = !0, this.zoomSpeed = 1, 
+				this.enableRotate = !0, 
+				this.rotateSpeed = 0.025, 
+				this.enablePan = !0, 
+				this.panSpeed = 1, this.screenSpacePanning = !0, this.keyPanSpeed = 7, this.autoRotate = !1, this.autoRotateSpeed = 2, this.keys = {
 					LEFT: "ArrowLeft",
 					UP: "ArrowUp",
 					RIGHT: "ArrowRight",
@@ -18654,7 +18658,11 @@
 		da(), document.body.appendChild(ca.domElement), document.getElementById("ascii").style.whiteSpace = "prewrap", ra.load("https://cdn.jsdelivr.net/gh/rxm333/STL-ASCII/models/martin.stl", (function(e) {
 			ea.material = ia, ea.geometry = e;
 			var t = new Zt(e, ia);
-			ea.position.copy = t.position, e.computeVertexNormals(), ea.geometry.center(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox(), ea.rotation.x = -90 * Math.PI / 180, ea.geometry.computeBoundingBox();
+			ea.position.copy = t.position, 
+			e.computeVertexNormals(), 
+			ea.geometry.center(),
+			ea.rotation.x = -90 * Math.PI / 180, 
+			ea.geometry.computeBoundingBox();
 			var A = ea.geometry.boundingBox;
 
 			function n() {
@@ -18677,7 +18685,8 @@
 			function e() {
 				if (1 == Zo) {
 					const t = jo.getElapsedTime();
-					ea.rotation.z = mouseX;
+					// ea.rotation.z = mouseX;
+					ea.rotation.z = t / 3;  
 					console.log('Model rotation:', { 
 						z: ea.rotation.z.toFixed(3), 
 						y: ea.rotation.y.toFixed(3) 
