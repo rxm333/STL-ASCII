@@ -18053,11 +18053,32 @@
 			};
 		class zo extends Q {
 			constructor(e, t) {
-				super(), void 0 === t && console.warn('THREE.OrbitControls: The second parameter "domElement" is now mandatory.'), t === document && console.error('THREE.OrbitControls: "document" should not be used as the target "domElement". Please use "renderer.domElement" instead.'), this.object = e, this.domElement = t, this.domElement.style.touchAction = "none", this.enabled = !0, this.target = new J, this.minDistance = 0, this.maxDistance = 1 / 0, this.minZoom = 0, this.maxZoom = 1 / 0, this.minPolarAngle = 0, this.maxPolarAngle = Math.PI, this.minAzimuthAngle = -1 / 0, this.maxAzimuthAngle = 1 / 0, this.enableDamping = !1, this.dampingFactor = .05, this.enableZoom = !0, this.zoomSpeed = 1, 
+				super(), void 0 === t && console.warn('THREE.OrbitControls: The second parameter "domElement" is now mandatory.'), t === document && console.error('THREE.OrbitControls: "document" should not be used as the target "domElement". Please use "renderer.domElement" instead.'), 
+				this.object = e, 
+				this.domElement = t, 
+				this.domElement.style.touchAction = "none", 
+				this.enabled = !0, this.target = new J, 
+				this.minDistance = 0, 
+				this.maxDistance = 1 / 0, 
+				this.minZoom = 0, 
+				this.maxZoom = 1 / 0, 
+				this.minPolarAngle = 0, 
+				this.maxPolarAngle = Math.PI, 
+				this.minAzimuthAngle = -1 / 0, 
+				this.maxAzimuthAngle = 1 / 0, 
+				this.enableDamping = !1, 
+				this.dampingFactor = .05, 
+				this.enableZoom = !1, 
+				this.zoomSpeed = 1, 
 				this.enableRotate = !0, 
 				this.rotateSpeed = 0.025, 
 				this.enablePan = !0, 
-				this.panSpeed = 1, this.screenSpacePanning = !0, this.keyPanSpeed = 7, this.autoRotate = !1, this.autoRotateSpeed = 2, this.keys = {
+				this.panSpeed = 1, 
+				this.screenSpacePanning = !0, 
+				this.keyPanSpeed = 7, 
+				this.autoRotate = !1, 
+				this.autoRotateSpeed = 2, 
+				this.keys = {
 					LEFT: "ArrowLeft",
 					UP: "ArrowUp",
 					RIGHT: "ArrowRight",
@@ -18439,12 +18460,18 @@
 				let c, l;
 				const h = document.createElement("div");
 				h.style.cursor = "default";
+				h.classList.add('ascii-container');  
+
 				const u = document.createElement("table");
+				u.classList.add('ascii-table');  	
+
 				let d, p, g;
 				h.appendChild(u), this.setSize = function(t, A) {
 					c = t, l = A, e.setSize(t, A),
 						function() {
-							d = Math.round(c * C), p = Math.round(l * C), v.width = d, v.height = p, g = e.domElement, g.style.backgroundColor && (u.rows[0].cells[0].style.backgroundColor = g.style.backgroundColor, u.rows[0].cells[0].style.color = g.style.color), u.cellSpacing = 0, u.cellPadding = 0;
+							d = Math.round(c * C), p = Math.round(l * C), v.width = d, v.height = p, g = e.domElement, 
+							g.style.backgroundColor && (u.rows[0].cells[0], 
+							u.rows[0].cells[0]), u.cellSpacing = 0, u.cellPadding = 0;
 							const t = u.style;
 							t.display = "inline", t.width = Math.round(d / C * r) + "px", t.height = Math.round(p / C * r) + "px", t.whiteSpace = "pre", t.margin = "0px", t.padding = "0px", t.letterSpacing = _ + "px", t.fontFamily = B, t.fontSize = b + "px", t.lineHeight = E + "px", t.textAlign = "left", t.textDecoration = "none"
 						}()
