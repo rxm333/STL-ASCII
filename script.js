@@ -18669,7 +18669,7 @@
 				ca.render(ta, oa)
 			}
 			ea.position.y = (A.max.z - A.min.z) / 150, 
-			oa.position.x = 2 * A.max.x, oa.position.y = A.max.y, oa.position.z = 2 * A.max.z, 
+			oa.position.x = 3 * A.max.x, oa.position.y = A.max.y, oa.position.z = 2 * A.max.z, 
 			ta.add(ea), $o = new zo(oa, ca.domElement),
 			$o.enableZoom = false,
 
@@ -18686,7 +18686,7 @@
 				if (1 == Zo) {
 					const t = jo.getElapsedTime();
 					// ea.rotation.z = mouseX;
-					ea.rotation.z = t / 3;  
+					ea.rotation.z = -t / 3;  
 					console.log('Model rotation:', { 
 						z: ea.rotation.z.toFixed(3), 
 						y: ea.rotation.y.toFixed(3) 
