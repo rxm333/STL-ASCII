@@ -3951,7 +3951,11 @@
 									n = this._document.createElement("img"),
 									r = this._document.createElement("span"),
 									i = this._document.body;
-								A.style.visibility = "hidden", A.style.fontFamily = e, A.style.fontSize = t, A.style.margin = "0", A.style.padding = "0", A.style.whiteSpace = "nowrap", i.appendChild(A), n.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", n.width = 1, n.height = 1, n.style.margin = "0", n.style.padding = "0", n.style.verticalAlign = "baseline", r.style.fontFamily = e, r.style.fontSize = t, r.style.margin = "0", r.style.padding = "0", r.appendChild(this._document.createTextNode(ts)), A.appendChild(r), A.appendChild(n);
+								A.style.visibility = "hidden", 
+                                A.style.fontFamily = 
+                                e, A.style.fontSize = 
+                                t, A.style.margin = "0", 
+                                A.style.padding = "0", A.style.whiteSpace = "nowrap", i.appendChild(A), n.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", n.width = 1, n.height = 1, n.style.margin = "0", n.style.padding = "0", n.style.verticalAlign = "baseline", r.style.fontFamily = e, r.style.fontSize = t, r.style.margin = "0", r.style.padding = "0", r.appendChild(this._document.createTextNode(ts)), A.appendChild(r), A.appendChild(n);
 								var s = n.offsetTop - r.offsetTop + 2;
 								A.removeChild(r), A.appendChild(this._document.createTextNode(ts)), A.style.lineHeight = "normal", n.style.verticalAlign = "super";
 								var o = n.offsetTop - A.offsetTop + 2;
@@ -18671,6 +18675,7 @@
 		let ca, la = " .:-+*=%@#";
 		let ha = "white",
 			ua = "black";
+			window.threeJsCamera = oa; // Log: On expose la variable de la caméra 'oa' pour la contrôler depuis l'extérieur (index.html).
 
 		function da() {
 			ca = new Wo(aa, la, {
@@ -18698,6 +18703,7 @@
 			ea.position.y = (A.max.z - A.min.z) / 150, 
 			oa.position.x = 3 * A.max.x, oa.position.y = A.max.y, oa.position.z = 2 * A.max.z, 
 			ta.add(ea), $o = new zo(oa, ca.domElement),
+			window.threeJsControls = $o; // Log: On expose la variable des contrôles '$o' pour la synchroniser avec les sliders.
 			$o.enableZoom = false,
 
 			$o.domElement.removeEventListener("wheel", k);
@@ -18712,8 +18718,8 @@
 			function e() {
 				if (1 == Zo) {
 					const t = jo.getElapsedTime();
-					// ea.rotation.z = mouseX;
-					ea.rotation.z = -t / 3;  
+					// ea.rotation.z = mouseX; /// rotation manuelle mouse
+					 ea.rotation.z = -t / 3;  /// defilement automatique
 					console.log('Model rotation:', { 
 						z: ea.rotation.z.toFixed(3), 
 						y: ea.rotation.y.toFixed(3) 
